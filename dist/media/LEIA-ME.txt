@@ -1,0 +1,20 @@
+COLOQUE AQUI AS FOTOS E VÍDEOS DA CLIMA RD
+==========================================
+
+Use exatamente estes nomes (ou mude os caminhos em src/data.js):
+
+hero.mp4          Vídeo de fundo do topo (5 a 10 s, sem som, horizontal, até ~5 MB)
+tecnico.jpg       Foto do técnico trabalhando (VERTICAL, boa luz, rosto visível)
+antes.jpg         Aparelho sujo
+depois.jpg        O MESMO aparelho limpo, com o MESMO enquadramento do "antes"
+og.jpg            Imagem que aparece ao compartilhar o link (1200x630)
+
+Galeria (formato vertical, estilo Reels/Stories):
+trabalho-1.mp4 + trabalho-1.jpg (capa)
+trabalho-2.jpg
+trabalho-3.mp4 + trabalho-3.jpg (capa)
+trabalho-4.jpg
+trabalho-5.mp4 + trabalho-5.jpg (capa)
+trabalho-6.jpg
+
+Dica: mande os arquivos originais para o Claude e ele otimiza o tamanho.
