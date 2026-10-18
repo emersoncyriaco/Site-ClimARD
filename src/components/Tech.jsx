@@ -43,11 +43,11 @@ export default function Tech() {
 
         <div>
           <div className="section__head">
-            <span className="eyebrow">Diagnóstico de precisão</span>
-            <h2 className="h2">Nada de chute. <em>Medição.</em></h2>
+            <span className="eyebrow">Nossos equipamentos</span>
+            <h2 className="h2">Nada de palpite. <em>Medição.</em></h2>
             <p className="lead">
-              Equipamentos profissionais mostram o que está errado antes de trocar qualquer peça.
-              Você economiza e o conserto dura.
+              Instrumentos profissionais identificam com exatidão a origem do defeito. Assim, você
+              economiza, e o conserto dura mais.
             </p>
           </div>
           <ol className="equip">

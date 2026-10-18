@@ -25,14 +25,14 @@ export default function FinalCta() {
       <AirFlow />
       <Swoosh />
       <div className="final__inner">
-        <span className="eyebrow">Calor não espera</span>
+        <span className="eyebrow">O calor não espera</span>
         <h2 className="final__title">Seu ar gelando ainda esta semana.</h2>
         <div className="hero__ctas">
           <a href="#agendar" className="btn btn--white btn--lg" onClick={onAnchorClick}>
             <Icon name="calendar" /> Agendar visita
           </a>
           <a href={waLink(defaultMessage)} target="_blank" rel="noopener" className="btn btn--ghost btn--lg" onClick={() => track("clique_whatsapp", { origem: "final" })}>
-            <Icon name="chat" /> Falar no WhatsApp
+            <Icon name="chat" /> Falar pelo WhatsApp
           </a>
         </div>
       </div>

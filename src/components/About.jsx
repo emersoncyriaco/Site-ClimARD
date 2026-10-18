@@ -4,10 +4,9 @@ import { business } from "../data";
 import Icon from "./Icon";
 
 const points = [
-  "Diagnóstico antes de qualquer reparo",
-  "Medições feitas na sua frente",
+  "Medições feitas à sua frente",
+  "Nenhum serviço desnecessário",
   "Local limpo ao final do serviço",
-  "Garantia em todos os serviços",
 ];
 
 export default function About() {
@@ -33,8 +32,8 @@ export default function About() {
         <span className="eyebrow">Quem vai até a sua casa</span>
         <h2 className="h2">Técnico especialista, <em>não um curioso.</em></h2>
         <p className="lead">
-          Na {business.name}, cada atendimento começa com um diagnóstico completo. As medições são feitas
-          na sua frente e você entende exatamente o que o aparelho precisa, sem serviço empurrado.
+          Na {business.name}, cada atendimento começa com um diagnóstico completo, para que você
+          entenda exatamente de que o aparelho precisa.
         </p>
         <ul className="checklist">
           {points.map((p) => <li key={p}><span><Icon name="check" size={14} stroke={2.4} /></span>{p}</li>)}

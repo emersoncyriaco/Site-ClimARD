@@ -20,7 +20,7 @@ export default function Footer() {
       <div className="footer__top">
         <div>
           <Logo />
-          <p>Conserto, manutenção e higienização de ar-condicionado com diagnóstico de precisão.</p>
+          <p>Conserto, manutenção e higienização de <span className="nowrap">ar-condicionado</span> com diagnóstico de precisão.</p>
         </div>
         <ul>
           <li><Icon name="chat" size={16} /> <a href={waLink(defaultMessage)} target="_blank" rel="noopener">{business.phoneDisplay}</a></li>

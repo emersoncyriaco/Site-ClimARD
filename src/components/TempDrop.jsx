@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
 
 const messages = [
-  <>Ar fraco, barulho, <em className="hot">água pingando</em>…</>,
-  <>Diagnóstico com <em>ferramentas de precisão.</em></>,
-  <>E o seu ambiente <em>gelando de novo.</em></>,
+  <>Ar fraco, barulho ou <em className="hot">água pingando</em>?</>,
+  <>Primeiro, fazemos o diagnóstico com <em>ferramentas de precisão.</em></>,
+  <>Depois, o <span className="nowrap">ar-condicionado</span> volta a <em>gelar.</em></>,
 ];
 
 // Seção travada: a temperatura cai de 32° para 18° conforme o scroll

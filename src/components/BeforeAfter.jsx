@@ -37,7 +37,7 @@ export default function BeforeAfter() {
       <div className="section__head">
         <span className="eyebrow">Antes × depois</span>
         <h2 className="h2">A diferença que você <em>respira.</em></h2>
-        <p className="lead">Arraste para comparar. Aparelho sujo acumula fungos e bactérias e gasta mais energia.</p>
+        <p className="lead">Arraste para comparar. Um aparelho sujo acumula fungos e bactérias, além de gastar mais energia.</p>
       </div>
 
       <div

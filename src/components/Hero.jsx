@@ -51,21 +51,20 @@ export default function Hero() {
           <span className="line"><span>como novo.</span></span>
         </h1>
         <p className="hero__lead">
-          Assistência técnica em ar-condicionado com diagnóstico de precisão: medimos capacitor,
-          pressão do gás e corrente elétrica antes de mexer em qualquer peça.
+          Oferecemos assistência técnica em <span className="nowrap">ar-condicionado</span> com diagnóstico de precisão: antes de
+          substituir qualquer peça, medimos o capacitor, a pressão do gás e a corrente elétrica.
         </p>
         <div className="hero__ctas">
           <a href="#agendar" className="btn btn--primary btn--lg" onClick={onAnchorClick}>
             <Icon name="calendar" /> Agendar visita
           </a>
           <a href={waLink(defaultMessage)} target="_blank" rel="noopener" className="btn btn--ghost btn--lg" onClick={() => track("clique_whatsapp", { origem: "hero" })}>
-            <Icon name="chat" /> Chamar no WhatsApp
+            <Icon name="chat" /> Falar pelo WhatsApp
           </a>
         </div>
+        {/* Marcas e garantia já aparecem na faixa abaixo e no selo da foto */}
         <ul className="hero__trust">
           <li><Icon name="check" size={16} /> Orçamento antes do serviço</li>
-          <li><Icon name="check" size={16} /> Todas as marcas</li>
-          <li><Icon name="check" size={16} /> Garantia no serviço</li>
         </ul>
       </div>
 

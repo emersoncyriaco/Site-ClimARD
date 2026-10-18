@@ -6,10 +6,10 @@ export default function Testimonials() {
   if (!testimonials.length) return null;
 
   return (
-    <section className="section reviews light">
+    <section className="section reviews alt">
       <div className="section__head">
         <span className="eyebrow">Avaliações</span>
-        <h2 className="h2">Quem chamou, <em>recomenda.</em></h2>
+        <h2 className="h2">Quem contratou <em>recomenda.</em></h2>
       </div>
       <div className="reviews__grid">
         {testimonials.map((t) => (

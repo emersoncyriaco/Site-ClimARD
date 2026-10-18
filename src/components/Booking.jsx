@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
-import { useBooking } from "../lib/booking";
 import { buildBookingMessage, track, waLink } from "../lib/whatsapp";
 import { booking, business } from "../data";
 import Icon from "./Icon";
@@ -48,7 +47,6 @@ function Chip({ active, children, onClick, className = "" }) {
 export default function Booking() {
   const ref = useRef(null);
   const cardRef = useRef(null);
-  const { prefill } = useBooking();
   const [step, setStep] = useState(0);
   const [data, setData] = useState(initial);
   const [sent, setSent] = useState(false);
@@ -57,18 +55,6 @@ export default function Booking() {
   const set = (patch) => setData((d) => ({ ...d, ...patch }));
   const toggleProblem = (p) =>
     set({ problems: data.problems.includes(p) ? data.problems.filter((x) => x !== p) : [...data.problems, p] });
-
-  // Vindo de um card de problema/serviço: preenche e pula para o próximo passo
-  useEffect(() => {
-    if (!prefill) return;
-    setData((d) => ({
-      ...d,
-      service: prefill.service ?? d.service,
-      problems: prefill.problem && !d.problems.includes(prefill.problem) ? [...d.problems, prefill.problem] : d.problems,
-    }));
-    setStep(prefill.problem ? 0 : 1);
-    setSent(false);
-  }, [prefill]);
 
   const serviceLabel = booking.services.find((s) => s.id === data.service)?.label ?? "";
   const showProblems = data.service === "conserto" || data.service === "diagnostico" || data.problems.length > 0;
@@ -110,13 +96,13 @@ export default function Booking() {
   return (
     <section ref={ref} className="section booking light" id="agendar">
       <div className="booking__pitch">
-        <span className="eyebrow">Agendamento online</span>
+        <span className="eyebrow">Agendamento on-line</span>
         <h2 className="h2">Agende sua visita <em>agora.</em></h2>
-        <p className="lead">Escolha o serviço, o dia e o período. A confirmação chega direto no WhatsApp do técnico.</p>
+        <p className="lead">Escolha o serviço, o dia e o período. A solicitação chega diretamente ao WhatsApp do técnico.</p>
         <ul className="checklist">
-          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Sem cadastro e sem login</li>
-          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Leva menos de 1 minuto</li>
-          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Confirmação direto com o técnico</li>
+          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Sem cadastro e sem senha</li>
+          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Tudo em menos de um minuto</li>
+          <li><span><Icon name="check" size={14} stroke={2.4} /></span>Diagnóstico, serviço e teste final no horário combinado</li>
         </ul>
         <div className="booking__info">
           <span><Icon name="clock" size={16} /> {business.hours}</span>
@@ -166,7 +152,7 @@ export default function Booking() {
               <div className="bk__chips">
                 {booking.types.map((t) => <Chip key={t} active={data.type === t} onClick={() => set({ type: t })}>{t}</Chip>)}
               </div>
-              <h4 className="bk__subtitle">Potência (BTUs)</h4>
+              <h4 className="bk__subtitle">Potência (BTU)</h4>
               <div className="bk__chips">
                 {booking.btus.map((b) => <Chip key={b} active={data.btus === b} onClick={() => set({ btus: b })}>{b}</Chip>)}
               </div>
@@ -181,7 +167,7 @@ export default function Booking() {
 
           {step === 2 && (
             <>
-              <h3 className="bk__title">Qual o melhor dia?</h3>
+              <h3 className="bk__title">Qual é o melhor dia?</h3>
               <div className="bk__days" role="listbox" aria-label="Dias disponíveis">
                 {days.map(({ date, offset }) => (
                   <button
@@ -203,7 +189,7 @@ export default function Booking() {
                   <Chip key={p} active={data.period === p} onClick={() => set({ period: p })} className="chip--block">{p}</Chip>
                 ))}
               </div>
-              <p className="bk__note">O horário exato é confirmado pelo técnico no WhatsApp.</p>
+              <p className="bk__note">O técnico confirmará o horário exato pelo WhatsApp.</p>
             </>
           )}
 
@@ -212,7 +198,7 @@ export default function Booking() {
               <h3 className="bk__title">Para quem é a visita?</h3>
               <label className="field">
                 <span>Seu nome</span>
-                <input value={data.name} onChange={(e) => set({ name: e.target.value })} placeholder="Como podemos te chamar?" autoComplete="name" />
+                <input value={data.name} onChange={(e) => set({ name: e.target.value })} placeholder="Como podemos chamar você?" autoComplete="name" />
               </label>
               <label className="field">
                 <span>Endereço ou bairro</span>
@@ -220,7 +206,7 @@ export default function Booking() {
               </label>
               <label className="field">
                 <span>Observação <small>(opcional)</small></span>
-                <textarea rows={2} value={data.notes} onChange={(e) => set({ notes: e.target.value })} placeholder="Ex.: aparelho fica no 2º andar, portão azul…" />
+                <textarea rows={2} value={data.notes} onChange={(e) => set({ notes: e.target.value })} placeholder="Ex.: o aparelho fica no 2º andar, e o portão é azul." />
               </label>
             </>
           )}
@@ -231,15 +217,15 @@ export default function Booking() {
               <div className="ticket">
                 <div><small>Serviço</small><b>{serviceLabel}</b></div>
                 {data.problems.length > 0 && <div><small>Problema</small><b>{data.problems.join(", ")}</b></div>}
-                <div><small>Aparelho</small><b>{data.type} · {data.btus === "Não sei" ? "BTUs ?" : `${data.btus} BTUs`} · {data.qty}x</b></div>
+                <div><small>Aparelho</small><b>{data.type} · {data.btus === "Não sei" ? "potência não informada" : `${data.btus} BTU`} · {data.qty}x</b></div>
                 <div><small>Quando</small><b>{weekday(data.date)} {dayMonth(data.date)} · {data.period}</b></div>
                 <div><small>Nome</small><b>{data.name}</b></div>
                 <div><small>Local</small><b>{data.address}</b></div>
               </div>
               <a className="btn btn--whats btn--lg btn--block" href={waLink(message)} target="_blank" rel="noopener" onClick={send}>
-                <Icon name="chat" /> Confirmar no WhatsApp
+                <Icon name="chat" /> Confirmar pelo WhatsApp
               </a>
-              <p className="bk__note">Vamos abrir o WhatsApp com a mensagem pronta. É só tocar em enviar.</p>
+              <p className="bk__note">O WhatsApp será aberto com a mensagem pronta. Basta tocar em “Enviar”.</p>
             </>
           )}
 
@@ -247,9 +233,9 @@ export default function Booking() {
             <div className="bk__done">
               <span className="bk__done-icon"><Icon name="check" size={34} stroke={2.4} /></span>
               <h3 className="bk__title">Quase lá!</h3>
-              <p>Toque em <b>enviar</b> no WhatsApp. O técnico confirma o horário com você por lá.</p>
+              <p>Toque em <b>“Enviar”</b> no WhatsApp. O técnico confirmará o horário com você nessa conversa.</p>
               <div className="bk__done-actions">
-                <a className="btn btn--whats" href={waLink(message)} target="_blank" rel="noopener">Abrir WhatsApp de novo</a>
+                <a className="btn btn--whats" href={waLink(message)} target="_blank" rel="noopener">Abrir o WhatsApp novamente</a>
                 <button type="button" className="btn btn--ghost" onClick={restart}>Novo agendamento</button>
               </div>
             </div>

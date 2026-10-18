@@ -46,7 +46,7 @@ export default function FloatingCta() {
         target="_blank"
         rel="noopener"
         className="btn btn--whats floating__whats"
-        aria-label="Chamar no WhatsApp"
+        aria-label="Falar pelo WhatsApp"
         onClick={() => track("clique_whatsapp", { origem: "flutuante" })}
       >
         <Icon name="chat" size={20} /> <span className="floating__label">WhatsApp</span>

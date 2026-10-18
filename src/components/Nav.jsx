@@ -4,7 +4,6 @@ import Logo from "./Logo";
 import Icon from "./Icon";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
   { label: "Diagnóstico", href: "#diagnostico" },
   { label: "Antes e depois", href: "#antes-depois" },
   { label: "Dúvidas", href: "#duvidas" },

@@ -8,11 +8,11 @@ export const business = {
   whatsapp: "5500000000000", // ⚠️ 55 + DDD + número
   phoneDisplay: "(00) 00000-0000", // ⚠️
   region: "Sua cidade e região", // ⚠️ ex.: "Campinas e região"
-  hours: "Seg a Sáb · 8h às 18h", // ⚠️
+  hours: "Segunda a sábado, das 8h às 18h", // ⚠️
   instagram: "#", // ⚠️ link do Instagram
   technician: "Jamerson Freitas", // ⚠️
   workingDays: [1, 2, 3, 4, 5, 6], // dias que aparecem no agendamento (0 = domingo)
-  periods: ["Manhã · 8h às 12h", "Tarde · 13h às 18h"],
+  periods: ["Manhã · das 8h às 12h", "Tarde · das 13h às 18h"],
   credit: { label: "Site por Emerson Cyriaco", href: "#" },
 };
 
@@ -37,68 +37,28 @@ export const media = {
 
 export const brands = ["Samsung", "LG", "Midea", "Gree", "Elgin", "Daikin", "Fujitsu", "Springer", "Consul", "Philco", "Electrolux", "Carrier"];
 
+// Serviços oferecidos no agendamento e nos dados estruturados do rodapé
 export const services = [
-  {
-    id: "conserto",
-    icon: "ac-repair",
-    title: "Conserto e reparo",
-    desc: "Não gela, não liga ou faz barulho? Encontramos a causa e resolvemos.",
-    includes: ["Diagnóstico completo", "Troca de capacitor, sensor ou placa", "Teste final de funcionamento"],
-  },
-  {
-    id: "manutencao",
-    icon: "shield-check",
-    title: "Manutenção preventiva",
-    desc: "Revisão completa que evita quebras e mantém a conta de luz baixa.",
-    includes: ["Limpeza dos filtros", "Verificação elétrica", "Medição de pressão e temperatura"],
-  },
-  {
-    id: "higienizacao",
-    icon: "ac-clean",
-    title: "Higienização completa",
-    desc: "Limpeza profunda que elimina fungos, bactérias e mau cheiro.",
-    includes: ["Evaporadora e condensadora", "Bactericida e antifúngico", "Desobstrução do dreno"],
-  },
-  {
-    id: "gas",
-    icon: "gauge",
-    title: "Ajustes e carga de gás",
-    desc: "Pressão medida, vazamento encontrado e gás na quantidade certa.",
-    includes: ["Teste de vazamento", "Carga de gás na medida", "Ajuste de funcionamento"],
-  },
-];
-
-// Sintomas: clicar leva ao agendamento já preenchido
-export const problems = [
-  { icon: "thermo", title: "Não está gelando", hint: "Pode ser gás, capacitor ou filtro sujo.", service: "conserto" },
-  { icon: "ac-drip", title: "Pingando água", hint: "Dreno entupido ou instalação desnivelada.", service: "conserto" },
-  { icon: "ac-noise", title: "Barulho estranho", hint: "Peça solta, ventilador ou compressor.", service: "conserto" },
-  { icon: "odor", title: "Cheiro ruim", hint: "Fungos e bactérias acumulados.", service: "higienizacao" },
-  { icon: "power", title: "Liga e desliga sozinho", hint: "Sensor, placa ou capacitor com defeito.", service: "conserto" },
-  { icon: "bill", title: "Conta de luz alta", hint: "Aparelho sujo trabalha dobrado.", service: "manutencao" },
+  { id: "conserto", title: "Conserto" },
+  { id: "manutencao", title: "Manutenção preventiva" },
+  { id: "higienizacao", title: "Higienização completa" },
+  { id: "gas", title: "Ajustes e carga de gás" },
 ];
 
 // Equipamentos de diagnóstico
 export const tools = [
-  { icon: "capacitor", name: "Medição de capacitor", desc: "Mostra se a peça está fraca antes que ela danifique o compressor." },
-  { icon: "gauge", name: "Pressão do gás", desc: "Manifold digital: recarga só quando é necessário, na quantidade certa." },
-  { icon: "clamp", name: "Corrente elétrica", desc: "Alicate amperímetro confere o consumo real e a saúde do compressor." },
-  { icon: "probe", name: "Temperatura de saída", desc: "Comprova, com números, que o ar voltou a gelar como deve." },
+  { icon: "capacitor", name: "Capacitor", desc: "A medição mostra se a peça está fraca antes que ela danifique o compressor." },
+  { icon: "gauge", name: "Pressão do gás", desc: "Com o manifold digital, a recarga é feita somente quando necessária e na quantidade certa." },
+  { icon: "clamp", name: "Corrente elétrica", desc: "O alicate amperímetro confere o consumo real e a saúde do compressor." },
+  { icon: "probe", name: "Temperatura de saída", desc: "Comprova, com números, que o aparelho voltou a gelar como deve." },
 ];
 
-export const steps = [
-  { title: "Agende pelo site", text: "Escolha o serviço, o dia e o período. Leva menos de 1 minuto." },
-  { title: "Confirme no WhatsApp", text: "A mensagem já vai pronta. É só tocar em enviar e o técnico confirma." },
-  { title: "Receba o técnico", text: "Diagnóstico, serviço e teste final no horário combinado." },
-];
-
+// Marcas e agendamento já têm seções próprias: o FAQ não repete esses assuntos
 export const faq = [
-  { q: "Quanto custa a visita?", a: "Depende do serviço. Você recebe o orçamento antes de qualquer reparo, sem compromisso." }, // ⚠️
-  { q: "Quais regiões vocês atendem?", a: `Atendemos ${business.region}. Se tiver dúvida sobre o seu bairro, chame no WhatsApp.` },
-  { q: "De quanto em quanto tempo devo fazer manutenção?", a: "Em uso residencial, o ideal é a cada 6 meses. Em comércio ou uso intenso, a cada 3 meses." },
+  { q: "Quanto custa a visita?", a: "O valor depende do serviço. Você recebe o orçamento antes de qualquer reparo, sem compromisso." }, // ⚠️
+  { q: "Quais regiões vocês atendem?", a: `Atendemos ${business.region}. Em caso de dúvida sobre o seu bairro, fale conosco pelo WhatsApp.` },
+  { q: "Com que frequência devo fazer a manutenção?", a: "Em uso residencial, o ideal é fazê-la a cada seis meses; em estabelecimentos comerciais ou em uso intenso, a cada três meses." },
   { q: "O serviço tem garantia?", a: "Sim. Todos os serviços têm garantia, e os detalhes são informados no orçamento." }, // ⚠️
-  { q: "Atendem quais marcas?", a: `Todas as marcas: ${brands.slice(0, 8).join(", ")} e outras.` },
-  { q: "Como funciona o agendamento pelo site?", a: "Você escolhe o serviço, o aparelho, o dia e o período. O site monta a mensagem e abre o WhatsApp para você confirmar com o técnico." },
 ];
 
 // Opções do agendamento
