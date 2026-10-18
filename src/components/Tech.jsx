@@ -33,7 +33,7 @@ export default function Tech() {
       <div className="tech__layout">
         <div className="tech__media">
           <div className="tech__frame">
-            <Media src={media.tools} alt="Técnico medindo o ar-condicionado" className="tech__img" />
+            <Media src={media.tools} alt="Multímetro, capacitor e manifold usados no diagnóstico" className="tech__img" />
           </div>
           <div className="tech__stat">
             <b>4</b>

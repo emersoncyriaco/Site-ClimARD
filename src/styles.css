@@ -534,21 +534,43 @@ em.hot { color: var(--hot); }
 .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
 .footer__bottom a:hover { color: var(--sky); }
 
-/* ---------- Ações flutuantes ---------- */
-.floating { position: fixed; z-index: 40; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); display: flex; gap: 10px; }
-.floating .btn { box-shadow: 0 16px 40px -10px rgba(0,0,0,.45); }
-.floating__book { display: none; }
+/* ---------- WhatsApp flutuante ---------- */
+.fab {
+  position: fixed; z-index: 40;
+  right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
+  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--whats); color: #fff;
+  box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.75), 0 4px 14px rgba(0, 0, 0, 0.22);
+  /* escondido: encolhe e some; o atraso na visibility deixa a saída terminar */
+  opacity: 0; visibility: hidden; transform: scale(0.6);
+  transition: opacity .3s, transform .5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .4s var(--ease), visibility 0s linear .3s;
+}
+.fab.is-visible { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+/* anel que pulsa de leve para chamar a atenção */
+.fab::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  border: 2px solid var(--whats);
+  animation: fab-ring 2.6s var(--ease) infinite;
+}
+@keyframes fab-ring { 0% { transform: scale(1); opacity: 0.7; } 70%, 100% { transform: scale(1.55); opacity: 0; } }
+.fab__tip {
+  position: absolute; right: calc(100% + 12px); top: 50%;
+  padding: 8px 14px; border-radius: 10px; white-space: nowrap;
+  background: #fff; color: #0a1530;
+  font-family: var(--display); font-weight: 700; font-size: 0.85rem;
+  box-shadow: 0 12px 30px -12px rgba(10, 26, 63, 0.45);
+  opacity: 0; transform: translate(8px, -50%); pointer-events: none;
+  transition: opacity .3s, transform .4s var(--ease);
+}
+.fab:focus-visible .fab__tip { opacity: 1; transform: translate(0, -50%); }
+@media (hover: hover) {
+  .fab.is-visible:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 16px 34px -10px rgba(37, 211, 102, 0.85), 0 6px 16px rgba(0, 0, 0, 0.25); }
+  .fab:hover .fab__tip { opacity: 1; transform: translate(0, -50%); }
+}
 @media (max-width: 900px) {
-  .floating {
-    left: 0; right: 0; bottom: 0; gap: 10px;
-    padding: 12px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-    background: #fff; box-shadow: 0 -10px 30px -12px rgba(10, 26, 63, 0.3);
-  }
-  .floating .btn { box-shadow: none; }
-  .floating__book { display: inline-flex; flex: 1; }
-  .floating__whats { flex: 0 0 auto; padding-inline: 18px; }
-  .floating__label { display: none; }
-  .footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+  .fab { width: 52px; height: 52px; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+  /* o botão não cobre o crédito no fim da página */
+  .footer { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
 }
 
 /* ---------- Movimento reduzido ---------- */
