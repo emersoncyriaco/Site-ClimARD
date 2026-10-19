@@ -10,7 +10,8 @@ const schema = {
   name: business.name,
   telephone: business.phoneDisplay,
   areaServed: business.region,
-  openingHours: "Mo-Sa 08:00-18:00",
+  openingHours: ["Mo-Sa 08:30-12:00", "Mo-Sa 14:00-17:00"],
+  sameAs: [business.instagram.href],
   makesOffer: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title } })),
 };
 
@@ -26,7 +27,7 @@ export default function Footer() {
           <li><Icon name="chat" size={16} /> <a href={waLink(defaultMessage)} target="_blank" rel="noopener">{business.phoneDisplay}</a></li>
           <li><Icon name="clock" size={16} /> {business.hours}</li>
           <li><Icon name="pin" size={16} /> {business.region}</li>
-          <li><Icon name="instagram" size={16} /> <a href={business.instagram} target="_blank" rel="noopener">Instagram</a></li>
+          <li><Icon name="instagram" size={16} /> <a href={business.instagram.href} target="_blank" rel="noopener">{business.instagram.handle}</a></li>
         </ul>
       </div>
       <div className="footer__bottom">

@@ -5,14 +5,14 @@
 
 export const business = {
   name: "Clima RD",
-  whatsapp: "5500000000000", // ⚠️ 55 + DDD + número
-  phoneDisplay: "(00) 00000-0000", // ⚠️
-  region: "Sua cidade e região", // ⚠️ ex.: "Campinas e região"
-  hours: "Segunda a sábado, das 8h às 18h", // ⚠️
-  instagram: "#", // ⚠️ link do Instagram
+  whatsapp: "5581983188776", // 55 + DDD + número
+  phoneDisplay: "(81) 98318-8776",
+  region: "Olinda",
+  hours: "Segunda a sábado, das 8h30 às 12h e das 14h às 17h", // ⚠️ dias da semana a confirmar
+  instagram: { handle: "@_climard", href: "https://www.instagram.com/_climard/" },
   technician: "Jamerson Freitas", // ⚠️
-  workingDays: [1, 2, 3, 4, 5, 6], // dias que aparecem no agendamento (0 = domingo)
-  periods: ["Manhã · das 8h às 12h", "Tarde · das 13h às 18h"],
+  workingDays: [1, 2, 3, 4, 5, 6], // ⚠️ dias que aparecem no agendamento (0 = domingo)
+  periods: ["Manhã · das 8h30 às 12h", "Tarde · das 14h às 17h"],
   credit: { label: "Site por Emerson Cyriaco", href: "https://portifolio-ten-teal.vercel.app/" },
 };
 
