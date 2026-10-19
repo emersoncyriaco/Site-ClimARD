@@ -225,12 +225,15 @@ em.hot { color: var(--hot); }
   position: absolute; z-index: 7;
   display: flex; align-items: center; gap: 12px;
   padding: 12px 16px 12px 12px; border-radius: 14px;
-  background: #fff; color: #0a1530;
-  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+  /* vidro escuro na paleta do logo: contrasta com a foto clara e deixa o botão azul como destaque da tela */
+  background: rgba(7, 16, 41, 0.8); color: #fff;
+  border: 1px solid rgba(95, 180, 255, 0.28);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
-.badge-card__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--brand-grad); color: #fff; flex-shrink: 0; }
+.badge-card__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--brand-grad); color: #fff; flex-shrink: 0; box-shadow: 0 8px 20px -6px rgba(31, 95, 255, 0.75); }
 .badge-card b { display: block; font-family: var(--display); font-size: 0.92rem; }
-.badge-card small { color: #56667f; font-size: 0.78rem; }
+.badge-card small { color: #b9c8e2; font-size: 0.78rem; }
 .badge-card--a { top: 10%; left: -16%; }
 .badge-card--b { bottom: 10%; right: -12%; }
 
