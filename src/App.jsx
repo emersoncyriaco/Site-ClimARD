@@ -10,7 +10,7 @@ import About from "./components/About";
 import TempDrop from "./components/TempDrop";
 import Tech from "./components/Tech";
 import BeforeAfter from "./components/BeforeAfter";
-import Gallery from "./components/Gallery";
+// import Gallery from "./components/Gallery"; // desativada até chegarem as fotos (ver <Gallery /> abaixo)
 import Testimonials from "./components/Testimonials";
 import Booking from "./components/Booking";
 import Faq from "./components/Faq";
@@ -40,7 +40,9 @@ export default function App() {
         <TempDrop />
         <Tech />
         <BeforeAfter />
-        <Gallery />
+        {/* Galeria "Na prática": volta quando as fotos de media.gallery (data.js) estiverem em public/media/.
+            Para reativar, descomente esta linha e o import lá em cima. */}
+        {/* <Gallery /> */}
         <Testimonials />
         <Booking />
         <Faq />

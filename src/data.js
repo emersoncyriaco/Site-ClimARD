@@ -13,7 +13,7 @@ export const business = {
   technician: "Jamerson Freitas", // ⚠️
   workingDays: [1, 2, 3, 4, 5, 6], // dias que aparecem no agendamento (0 = domingo)
   periods: ["Manhã · das 8h às 12h", "Tarde · das 13h às 18h"],
-  credit: { label: "Site por Emerson Cyriaco", href: "#" },
+  credit: { label: "Site por Emerson Cyriaco", href: "https://portifolio-ten-teal.vercel.app/" },
 };
 
 // Fotos e vídeos ficam em public/media/. Enquanto o arquivo não existir,

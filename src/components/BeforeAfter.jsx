@@ -33,7 +33,7 @@ export default function BeforeAfter() {
   }, { scope: ref });
 
   return (
-    <section ref={ref} className="section ba light" id="antes-depois">
+    <section ref={ref} className="section ba alt" id="antes-depois">
       <div className="section__head">
         <span className="eyebrow">Antes × depois</span>
         <h2 className="h2">A diferença que você <em>respira.</em></h2>
