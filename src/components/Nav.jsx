@@ -22,8 +22,10 @@ export default function Nav() {
 
   return (
     <header ref={ref} className="nav">
-      <a href="#topo" onClick={onAnchorClick} aria-label="Climard Ar Condicionado, início">
+      {/* o nome acessível precisa conter o texto visível da logo, por isso sr-only em vez de aria-label */}
+      <a href="#topo" onClick={onAnchorClick}>
         <Logo />
+        <span className="sr-only">, voltar ao início</span>
       </a>
       <nav className="nav__links" aria-label="Principal">
         {links.map((l) => <a key={l.href} href={l.href} onClick={onAnchorClick}>{l.label}</a>)}

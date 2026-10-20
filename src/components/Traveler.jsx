@@ -61,13 +61,14 @@ export default function Traveler() {
       <div className="traveler__inner">
         <Media
           src={media.technician}
-          alt="Técnico da Clima RD trabalhando"
+          alt="Técnico de ar-condicionado da Clima RD com o manifold de medição"
           className="traveler__media"
           loading="eager"
+          fetchPriority="high"
           fallback={
             <div className="traveler__media traveler__ph">
               <img src={media.logo} alt="" width="96" height="96" />
-              <span>tecnico.jpg</span>
+              <span>tecnico.webp</span>
             </div>
           }
         />

@@ -1,12 +1,13 @@
 import { Fragment, useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "../lib/gsap";
+import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "../lib/gsap";
 import { brands } from "../data";
 
-// Faixa infinita de marcas que acelera com o scroll
+// Faixa infinita de marcas que acelera com o scroll (parada para quem pediu menos movimento no sistema)
 export default function Brands() {
   const trackRef = useRef(null);
 
   useGSAP(() => {
+    if (prefersReducedMotion()) return;
     const loop = gsap.to(trackRef.current, { xPercent: -50, repeat: -1, duration: 40, ease: "none" });
     ScrollTrigger.create({
       onUpdate: (self) => {
@@ -22,7 +23,8 @@ export default function Brands() {
   return (
     <div className="brands alt">
       <p className="brands__label">Atendemos todas as marcas</p>
-      <div className="brands__viewport" aria-label={`Marcas atendidas: ${brands.join(", ")}`}>
+      <p className="sr-only">Marcas atendidas: {brands.join(", ")}.</p>
+      <div className="brands__viewport">
         <div ref={trackRef} className="brands__track" aria-hidden="true">
           {list.map((b, i) => (
             <Fragment key={i}>

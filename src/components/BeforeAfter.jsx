@@ -37,7 +37,7 @@ export default function BeforeAfter() {
       <div className="section__head">
         <span className="eyebrow">Antes × depois</span>
         <h2 className="h2">A diferença que você <em>respira.</em></h2>
-        <p className="lead">Arraste para comparar. Um aparelho sujo acumula fungos e bactérias, além de gastar mais energia.</p>
+        <p className="lead">Arraste para comparar. Sem higienização, o aparelho acumula sujeira e gasta mais energia.</p>
       </div>
 
       <div
@@ -50,11 +50,11 @@ export default function BeforeAfter() {
         onPointerCancel={() => (dragging.current = false)}
       >
         <div className="ba__layer">
-          <Media src={media.after} alt="Ar-condicionado depois da limpeza" className="ba__img" fallback={<FinsFallback />} />
+          <Media src={media.after} alt="Turbina e bandeja do ar-condicionado limpas, depois da higienização" className="ba__img" fallback={<FinsFallback />} />
           <span className="ba__tag ba__tag--after">Depois</span>
         </div>
         <div className="ba__layer ba__layer--before">
-          <Media src={media.before} alt="Ar-condicionado antes da limpeza" className="ba__img" fallback={<FinsFallback dirty />} />
+          <Media src={media.before} alt="Turbina e bandeja do ar-condicionado sujas, antes da higienização" className="ba__img" fallback={<FinsFallback dirty />} />
           <span className="ba__tag ba__tag--before">Antes</span>
         </div>
         <div className="ba__handle" aria-hidden="true">

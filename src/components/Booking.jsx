@@ -97,7 +97,7 @@ export default function Booking() {
     <section ref={ref} className="section booking light" id="agendar">
       <div className="booking__pitch">
         <span className="eyebrow">Agendamento on-line</span>
-        <h2 className="h2">Agende sua visita <em>agora.</em></h2>
+        <h2 className="h2">Agende sua visita técnica <em>agora.</em></h2>
         <p className="lead">Escolha o serviço, o dia e o período. A solicitação chega diretamente ao WhatsApp do técnico.</p>
         <ul className="checklist">
           <li><span><Icon name="check" size={14} stroke={2.4} /></span>Sem cadastro e sem senha</li>
@@ -222,7 +222,7 @@ export default function Booking() {
                 <div><small>Nome</small><b>{data.name}</b></div>
                 <div><small>Local</small><b>{data.address}</b></div>
               </div>
-              <a className="btn btn--whats btn--lg btn--block" href={waLink(message)} target="_blank" rel="noopener" onClick={send}>
+              <a className="btn btn--whats btn--lg btn--block btn--shiny" href={waLink(message)} target="_blank" rel="noopener" onClick={send}>
                 <Icon name="chat" /> Confirmar pelo WhatsApp
               </a>
               <p className="bk__note">O WhatsApp será aberto com a mensagem pronta. Basta tocar em “Enviar”.</p>

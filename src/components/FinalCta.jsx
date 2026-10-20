@@ -28,10 +28,10 @@ export default function FinalCta() {
         <span className="eyebrow">O calor não espera</span>
         <h2 className="final__title">Seu ar gelando ainda esta semana.</h2>
         <div className="hero__ctas">
-          <a href="#agendar" className="btn btn--white btn--lg" onClick={onAnchorClick}>
+          <a href="#agendar" className="btn btn--white btn--lg btn--shiny" onClick={onAnchorClick}>
             <Icon name="calendar" /> Agendar visita
           </a>
-          <a href={waLink(defaultMessage)} target="_blank" rel="noopener" className="btn btn--ghost btn--lg" onClick={() => track("clique_whatsapp", { origem: "final" })}>
+          <a href={waLink(defaultMessage)} target="_blank" rel="noopener" className="btn btn--ghost btn--lg btn--shiny" onClick={() => track("clique_whatsapp", { origem: "final" })}>
             <Icon name="chat" /> Falar pelo WhatsApp
           </a>
         </div>

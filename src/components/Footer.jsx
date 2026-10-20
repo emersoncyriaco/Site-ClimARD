@@ -8,11 +8,15 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "HVACBusiness",
   name: business.name,
-  telephone: business.phoneDisplay,
-  areaServed: business.region,
+  url: business.url,
+  image: `${business.url}/media/og.jpg`,
+  logo: `${business.url}/media/apple-touch-icon.png`,
+  telephone: `+${business.whatsapp}`,
+  address: { "@type": "PostalAddress", addressLocality: business.region, addressRegion: business.state, addressCountry: "BR" },
+  areaServed: { "@type": "City", name: business.region },
   openingHours: ["Mo-Sa 08:30-12:00", "Mo-Sa 14:00-17:00"],
   sameAs: [business.instagram.href],
-  makesOffer: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title } })),
+  makesOffer: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: `${s.title} de ar-condicionado` } })),
 };
 
 export default function Footer() {
@@ -21,7 +25,7 @@ export default function Footer() {
       <div className="footer__top">
         <div>
           <Logo />
-          <p>Conserto, manutenção e higienização de <span className="nowrap">ar-condicionado</span> com diagnóstico de precisão.</p>
+          <p>Conserto, manutenção e higienização de <span className="nowrap">ar-condicionado</span> em {business.region} ({business.state}), com diagnóstico de precisão.</p>
         </div>
         <ul>
           <li><Icon name="chat" size={16} /> <a href={waLink(defaultMessage)} target="_blank" rel="noopener">{business.phoneDisplay}</a></li>

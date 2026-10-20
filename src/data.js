@@ -8,6 +8,9 @@ export const business = {
   whatsapp: "5581983188776", // 55 + DDD + número
   phoneDisplay: "(81) 98318-8776",
   region: "Olinda",
+  state: "PE",
+  // endereço do site: trocar aqui, no index.html, em public/robots.txt e em public/sitemap.xml se ganhar domínio próprio
+  url: "https://climard01.vercel.app",
   hours: "Segunda a sábado, das 8h30 às 12h e das 14h às 17h", // ⚠️ dias da semana a confirmar
   instagram: { handle: "@_climard", href: "https://www.instagram.com/_climard/" },
   technician: "Jamerson Freitas", // ⚠️
@@ -20,11 +23,13 @@ export const business = {
 // o site mostra um placeholder com o nome do arquivo esperado.
 export const media = {
   logo: "/media/logo-web.png",
-  heroVideo: "/media/hero.mp4", // vídeo de fundo do topo (curto, sem som, até ~5 MB)
-  technician: "/media/tecnico.jpg", // foto do técnico trabalhando (vertical)
-  tools: "/media/ferramentas.jpg", // foto das ferramentas / medição (vertical ou quadrada)
-  before: "/media/antes.jpg", // aparelho sujo
-  after: "/media/depois.jpg", // mesmo aparelho limpo (mesmo enquadramento!)
+  // vídeo de fundo do topo (curto, sem som, até ~5 MB). Sem vídeo ainda: null evita um erro 404 a cada visita.
+  // Quando houver, use "/media/hero.mp4".
+  heroVideo: null,
+  technician: "/media/tecnico.webp", // foto do técnico trabalhando (vertical); também pré-carregada no index.html
+  tools: "/media/ferramentas.webp", // foto das ferramentas / medição (vertical ou quadrada)
+  before: "/media/antes.webp", // aparelho sujo
+  after: "/media/depois.webp", // mesmo aparelho limpo (mesmo enquadramento!)
   gallery: [
     { type: "video", src: "/media/trabalho-1.mp4", poster: "/media/trabalho-1.jpg", caption: "Higienização completa" },
     { type: "image", src: "/media/trabalho-2.jpg", caption: "Medição do capacitor" },
@@ -53,10 +58,15 @@ export const tools = [
   { icon: "probe", name: "Temperatura de saída", desc: "Comprova, com números, que o aparelho voltou a gelar como deve." },
 ];
 
-// Marcas e agendamento já têm seções próprias: o FAQ não repete esses assuntos
+// Marcas e agendamento já têm seções próprias: o FAQ não repete esses assuntos.
+// As perguntas seguem o que as pessoas digitam no Google (também vão nos dados estruturados FAQPage).
 export const faq = [
   { q: "Quanto custa a visita?", a: "O valor depende do serviço. Você recebe o orçamento antes de qualquer reparo, sem compromisso." }, // ⚠️
-  { q: "Quais regiões vocês atendem?", a: `Atendemos ${business.region}. Em caso de dúvida sobre o seu bairro, fale conosco pelo WhatsApp.` },
+  { q: "Quais regiões vocês atendem?", a: `Atendemos ${business.region}. Em caso de dúvida sobre o seu bairro, fale conosco pelo WhatsApp.` }, // ⚠️ listar bairros e cidades vizinhas
+  { q: "Quais tipos de aparelho vocês atendem?", a: "Atendemos aparelhos split hi-wall, de janela, piso-teto, cassete e portáteis." },
+  { q: "Por que o ar-condicionado não está gelando?", a: "As causas mais comuns são filtro sujo, falta de gás e capacitor fraco. O diagnóstico identifica qual delas afeta o seu aparelho antes de qualquer troca de peça." },
+  { q: "Por que o ar-condicionado está pingando água?", a: "Em geral, o dreno está entupido ou a instalação está desnivelada. A higienização completa inclui a desobstrução do dreno." },
+  { q: "O ar-condicionado está com cheiro ruim. O que fazer?", a: "O mau cheiro indica fungos e bactérias acumulados na serpentina e na turbina. A higienização completa, com bactericida e antifúngico, elimina o problema." },
   { q: "Com que frequência devo fazer a manutenção?", a: "Em uso residencial, o ideal é fazê-la a cada seis meses; em estabelecimentos comerciais ou em uso intenso, a cada três meses." },
   { q: "O serviço tem garantia?", a: "Sim. Todos os serviços têm garantia, e os detalhes são informados no orçamento." }, // ⚠️
 ];

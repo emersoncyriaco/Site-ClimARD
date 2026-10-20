@@ -1,6 +1,13 @@
 import { faq } from "../data";
 import Icon from "./Icon";
 
+// Dados estruturados para o Google entender as perguntas e respostas
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
+};
+
 export default function Faq() {
   return (
     <section className="section faq alt" id="duvidas">
@@ -19,6 +26,7 @@ export default function Faq() {
           </details>
         ))}
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </section>
   );
 }

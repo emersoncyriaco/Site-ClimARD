@@ -136,6 +136,28 @@ em.hot { color: var(--hot); }
 .btn--sm { min-height: 42px; padding: 8px 18px; font-size: 0.88rem; }
 .btn--block { width: 100%; }
 .btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+/* Botão com brilho: mesmo efeito do Shiny Button (Magic UI), feito em CSS puro.
+   Uma faixa de luz atravessa o botão e a borda de 1px brilha junto. */
+@property --shine-x { syntax: "<percentage>"; inherits: true; initial-value: 100%; }
+.btn--shiny { position: relative; isolation: isolate; animation: btn-shine 3.6s ease-in-out infinite; }
+.btn--shiny + .btn--shiny { animation-delay: 0.5s; }
+.btn--shiny::before,
+.btn--shiny::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+.btn--shiny::before {
+  background: linear-gradient(-75deg, transparent calc(var(--shine-x) + 8%), var(--shine, rgba(255, 255, 255, 0.4)) calc(var(--shine-x) + 25%), transparent calc(var(--shine-x) + 42%));
+}
+.btn--shiny::after {
+  padding: 1px;
+  background: linear-gradient(-75deg, var(--shine-edge-dim, rgba(255, 255, 255, 0.12)) calc(var(--shine-x) + 20%), var(--shine-edge, rgba(255, 255, 255, 0.75)) calc(var(--shine-x) + 25%), var(--shine-edge-dim, rgba(255, 255, 255, 0.12)) calc(var(--shine-x) + 100%));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+/* no botão branco o brilho é azul, senão não aparece */
+.btn--white.btn--shiny { --shine: rgba(31, 95, 255, 0.18); --shine-edge: rgba(31, 95, 255, 0.55); --shine-edge-dim: rgba(31, 95, 255, 0.08); }
+/* atravessa em ~1,8 s e descansa o resto do ciclo */
+@keyframes btn-shine { 0% { --shine-x: 100%; } 50%, 100% { --shine-x: -100%; } }
 @media (hover: hover) {
   .btn--primary:hover:not(:disabled) { background: #1a50e0; transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(31, 95, 255, 0.8); }
   .btn--ghost:hover { border-color: var(--blue-2); }
@@ -200,13 +222,17 @@ em.hot { color: var(--hot); }
   display: inline-flex; align-items: center; gap: 10px;
   padding: 8px 16px; border-radius: 100px;
   background: rgba(31, 95, 255, 0.14); border: 1px solid rgba(61, 139, 255, 0.35);
-  font-family: var(--display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; color: #cfe0ff;
+  font-family: var(--display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; line-height: 1.4; color: #cfe0ff;
 }
+.hero__eyebrow .pulse { flex-shrink: 0; }
+.hero__eyebrow > span:last-child { text-wrap: balance; }
+/* abaixo de 1200 px o H1 pode quebrar em duas linhas: cantos menos arredondados para a pílula não virar uma cápsula */
+@media (max-width: 1200px) { .hero__eyebrow { border-radius: 14px; } }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34,197,94,.6); animation: pulse 2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
 .hero__title {
   margin-top: 24px;
-  font-weight: 800;
+  font-family: var(--display); font-weight: 800;
   font-size: clamp(2.6rem, 6.2vw, 5.4rem);
   line-height: 1.02; letter-spacing: -0.035em;
 }
@@ -238,12 +264,17 @@ em.hot { color: var(--hot); }
 .badge-card--b { bottom: 10%; right: -12%; }
 
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-top: calc(var(--nav-h) + 32px); gap: 52px; }
+  .hero { grid-template-columns: minmax(0, 1fr); padding-top: calc(var(--nav-h) + 32px); gap: 52px; }
   .hero__visual { width: min(80vw, 360px); margin-bottom: 24px; }
   .badge-card { padding: 10px 14px 10px 10px; }
   .badge-card__icon { width: 34px; height: 34px; }
   .badge-card--a { left: -8%; }
   .badge-card--b { right: -8%; }
+}
+/* Telas médias (notebook pequeno, tablet deitado): os cards não encostam no título nem saem pela direita */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .badge-card--a { left: -8%; }
+  .badge-card--b { right: -4%; }
 }
 @media (max-width: 520px) { .hero__ctas .btn { width: 100%; } }
 
@@ -277,7 +308,7 @@ em.hot { color: var(--hot); }
 .brands__label { text-align: center; font-family: var(--display); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
 .brands__viewport { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
 .brands__track { display: flex; align-items: center; width: max-content; gap: 36px; padding-right: 36px; }
-.brands__track span { font-family: var(--display); font-weight: 800; font-size: clamp(1.1rem, 2vw, 1.45rem); color: #9aa8bd; white-space: nowrap; letter-spacing: -0.01em; }
+.brands__track span { font-family: var(--display); font-weight: 800; font-size: clamp(1.1rem, 2vw, 1.45rem); color: var(--muted); white-space: nowrap; letter-spacing: -0.01em; }
 .brands__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); opacity: 0.5; }
 
 /* ---------- Sobre ---------- */
@@ -541,21 +572,14 @@ em.hot { color: var(--hot); }
 .fab {
   position: fixed; z-index: 40;
   right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
-  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
   background: var(--whats); color: #fff;
-  box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.75), 0 4px 14px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 16px -6px rgba(37, 211, 102, 0.55), 0 2px 8px rgba(0, 0, 0, 0.18);
   /* escondido: encolhe e some; o atraso na visibility deixa a saída terminar */
   opacity: 0; visibility: hidden; transform: scale(0.6);
   transition: opacity .3s, transform .5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .4s var(--ease), visibility 0s linear .3s;
 }
 .fab.is-visible { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
-/* anel que pulsa de leve para chamar a atenção */
-.fab::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  border: 2px solid var(--whats);
-  animation: fab-ring 2.6s var(--ease) infinite;
-}
-@keyframes fab-ring { 0% { transform: scale(1); opacity: 0.7; } 70%, 100% { transform: scale(1.55); opacity: 0; } }
 .fab__tip {
   position: absolute; right: calc(100% + 12px); top: 50%;
   padding: 8px 14px; border-radius: 10px; white-space: nowrap;
@@ -567,13 +591,13 @@ em.hot { color: var(--hot); }
 }
 .fab:focus-visible .fab__tip { opacity: 1; transform: translate(0, -50%); }
 @media (hover: hover) {
-  .fab.is-visible:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 16px 34px -10px rgba(37, 211, 102, 0.85), 0 6px 16px rgba(0, 0, 0, 0.25); }
+  .fab.is-visible:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -8px rgba(37, 211, 102, 0.7), 0 3px 10px rgba(0, 0, 0, 0.2); }
   .fab:hover .fab__tip { opacity: 1; transform: translate(0, -50%); }
 }
 @media (max-width: 900px) {
-  .fab { width: 52px; height: 52px; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+  .fab { width: 46px; height: 46px; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
   /* o botão não cobre o crédito no fim da página */
-  .footer { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 }
 
 /* ---------- Movimento reduzido ---------- */

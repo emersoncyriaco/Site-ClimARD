@@ -43,8 +43,9 @@ export default function Tech() {
 
         <div>
           <div className="section__head">
-            <span className="eyebrow">Nossos equipamentos</span>
-            <h2 className="h2">Nada de palpite. <em>Medição.</em></h2>
+            {/* texto num só span: o eyebrow é flex e separaria os pedaços com o gap */}
+            <span className="eyebrow"><span>Diagnóstico de <span className="nowrap">ar-condicionado</span></span></span>
+            <h2 className="h2">O palpite dá lugar à <em>medição.</em></h2>
             <p className="lead">
               Instrumentos profissionais identificam com exatidão a origem do defeito. Assim, você
               economiza, e o conserto dura mais.
@@ -56,7 +57,7 @@ export default function Tech() {
                 <span className="equip__line" />
                 <span className="equip__icon"><Icon name={t.icon} size={22} /></span>
                 <div>
-                  <h3><small>0{i + 1}</small>{t.name}</h3>
+                  <h3><small aria-hidden="true">0{i + 1}</small>{t.name}</h3>
                   <p>{t.desc}</p>
                 </div>
               </li>

@@ -1,15 +1,22 @@
-COLOQUE AQUI AS FOTOS E VÍDEOS DA CLIMA RD
-==========================================
+FOTOS E VÍDEOS DA CLIMA RD
+==========================
 
-Use exatamente estes nomes (ou mude os caminhos em src/data.js):
+As imagens do site estão em WebP (bem mais leve que JPG). Os caminhos ficam em src/data.js.
 
-hero.mp4          Vídeo de fundo do topo (5 a 10 s, sem som, horizontal, até ~5 MB)
-tecnico.jpg       Foto do técnico trabalhando (VERTICAL, boa luz, rosto visível)
-antes.jpg         Aparelho sujo
-depois.jpg        O MESMO aparelho limpo, com o MESMO enquadramento do "antes"
-og.jpg            Imagem que aparece ao compartilhar o link (1200x630)
+Já no site:
+tecnico.webp       Foto do técnico trabalhando (vertical)
+ferramentas.webp   Foto das ferramentas de medição
+antes.webp         Aparelho sujo
+depois.webp        O MESMO aparelho limpo, com o MESMO enquadramento do "antes" (a refazer)
+og.jpg             Imagem que aparece ao compartilhar o link (1200x630)
+logo-web.png       Logo do menu e do rodapé (96x96)
+apple-touch-icon.png  Ícone ao salvar o site na tela inicial do celular (180x180)
+LOGO.PNG           Logo original em alta resolução (não é carregada pelo site)
 
-Galeria (formato vertical, estilo Reels/Stories):
+Ainda faltam:
+hero.mp4           Vídeo de fundo do topo (5 a 10 s, sem som, horizontal, até ~5 MB).
+                   Ao adicionar, troque heroVideo: null por "/media/hero.mp4" em src/data.js.
+Galeria (vertical, estilo Reels/Stories), hoje desativada em src/App.jsx:
 trabalho-1.mp4 + trabalho-1.jpg (capa)
 trabalho-2.jpg
 trabalho-3.mp4 + trabalho-3.jpg (capa)
@@ -17,4 +24,4 @@ trabalho-4.jpg
 trabalho-5.mp4 + trabalho-5.jpg (capa)
 trabalho-6.jpg
 
-Dica: mande os arquivos originais para o Claude e ele otimiza o tamanho.
+Dica: mande os arquivos originais para o Claude; ele otimiza o tamanho e converte o formato.

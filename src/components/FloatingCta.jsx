@@ -39,7 +39,7 @@ export default function FloatingCta() {
       aria-label="Falar pelo WhatsApp"
       onClick={() => track("clique_whatsapp", { origem: "flutuante" })}
     >
-      <Icon name="whatsapp" size={28} />
+      <Icon name="whatsapp" size={24} />
       <span className="fab__tip" aria-hidden="true">Falar pelo WhatsApp</span>
     </a>
   );
