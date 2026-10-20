@@ -11,7 +11,7 @@ export default function Tech() {
   useGSAP(() => {
     // Foto revela de baixo para cima e faz parallax
     gsap.from(".tech__frame", {
-      clipPath: "inset(100% 0% 0% 0% round 20px)", duration: 1.6, ease: "expo.out",
+      clipPath: "inset(100% 0% 0% 0%)", duration: 1.6, ease: "expo.out",
       scrollTrigger: { trigger: ".tech__frame", start: "top 80%" },
     });
     gsap.fromTo(".tech__img", { yPercent: -8 }, {

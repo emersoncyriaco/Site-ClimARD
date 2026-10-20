@@ -27,7 +27,7 @@ export default function BeforeAfter() {
       .to(p, { v: 50, duration: 0.8, ease: "power2.inOut", onUpdate: () => setPos(p.v) });
 
     gsap.from(frameRef.current, {
-      clipPath: "inset(12% 12% 12% 12% round 20px)", duration: 1.4, ease: "expo.out",
+      clipPath: "inset(12% 12% 12% 12%)", duration: 1.4, ease: "expo.out",
       scrollTrigger: { trigger: frameRef.current, start: "top 85%" },
     });
   }, { scope: ref });
