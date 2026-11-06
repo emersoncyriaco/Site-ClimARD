@@ -1,10 +1,10 @@
 // =========================================================
-// CLIMA RD: todo o conteúdo do site fica aqui.
+// CLIMARD: todo o conteúdo do site fica aqui.
 // Itens marcados com ⚠️ precisam ser confirmados com o cliente.
 // =========================================================
 
 export const business = {
-  name: "Clima RD",
+  name: "ClimaRD",
   whatsapp: "5581983188776", // 55 + DDD + número
   phoneDisplay: "(81) 98318-8776",
   region: "Olinda",
@@ -75,8 +75,8 @@ export const faq = [
 export const booking = {
   services: [...services.map((s) => ({ id: s.id, label: s.title })), { id: "diagnostico", label: "Não sei, quero um diagnóstico" }],
   problems: ["Não gela", "Pingando água", "Barulho", "Cheiro ruim", "Liga e desliga", "Não liga", "Conta de luz alta", "Outro"],
-  types: ["Split Hi-Wall", "Janela", "Piso-teto", "Cassete", "Portátil", "Outro"],
-  btus: ["9.000", "12.000", "18.000", "24.000", "30.000+", "Não sei"],
+  types: ["Split Hi-Wall", "Janela", "Portátil", "Outro"],
+  btus: ["9.000", "12.000", "18.000", "Não sei"],
 };
 
 // Depoimentos: use só avaliações REAIS (ex.: Google). A seção fica oculta enquanto a lista estiver vazia.
